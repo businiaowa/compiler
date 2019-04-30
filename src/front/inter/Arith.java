@@ -13,9 +13,7 @@ public class Arith extends Expr {
         this.expr2 = expr2;
     }
 
-    public Expr gen() {
-        return new Arith(type, op, expr1.reduce(), expr2.reduce());
-    }
+
 
     public Expr reduce() {
         String inter = this.toString();

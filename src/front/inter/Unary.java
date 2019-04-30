@@ -14,10 +14,6 @@ public class Unary extends Expr{
 
     }
 
-    public Expr gen() {
-        return new Unary(expr.reduce(), op);
-    }
-
     public Expr reduce() {
         String inter = this.toString();
         Temp t = new Temp(this.type);
