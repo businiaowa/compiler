@@ -24,6 +24,6 @@ public class Node {
     }
 
     public void emitLable(int lable) {
-        IO.stdout("L" + lable);
+        IO.stdout("L" + lable + "\n");
     }
 }

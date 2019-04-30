@@ -3,7 +3,7 @@ package front.inter;
 import front.lexer.Token;
 import front.symbols.Type;
 
-public class Expr extends Node{
+public abstract class Expr extends Node{
 
     public Type type;
 
@@ -14,11 +14,7 @@ public class Expr extends Node{
         this.op = op;
     }
 
-    public String gen() {
-        return null;
-    }
+    public abstract String gen();
 
-    public Expr reduce() {
-        return this;
-    }
+    public abstract Expr reduce();
 }

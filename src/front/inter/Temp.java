@@ -18,6 +18,10 @@ public class Temp extends Expr{
         return Tag.TEMP.lexeme + id;
     }
 
+    public Expr reduce() {
+        return this;
+    }
+
     public String toString() {
         return Tag.TEMP.lexeme + id;
     }
