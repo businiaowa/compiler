@@ -14,12 +14,16 @@ public class Access extends Expr {
         this.index = index;
     }
 
-    public String gen() {
-        return array.gen() + "[" + index.reduce().gen() + "]";
+    public Expr gen() {
+        return new Access(array, index.reduce(), type);
     }
 
     public Expr reduce() {
         return this;
+    }
+
+    public String toString() {
+        return array.toString() + "[" + index.reduce().toString() + "]";
     }
 
 }

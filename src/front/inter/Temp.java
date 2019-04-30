@@ -14,8 +14,8 @@ public class Temp extends Expr{
         this.id = ++index;
     }
 
-    public String gen() {
-        return Tag.TEMP.lexeme + id;
+    public Expr gen() {
+        return this;
     }
 
     public Expr reduce() {

@@ -14,15 +14,19 @@ public class Unary extends Expr{
 
     }
 
-    public String gen() {
-        return op.tag.lexeme + expr.reduce();
+    public Expr gen() {
+        return new Unary(expr.reduce(), op);
     }
 
     public Expr reduce() {
-        String gen = gen();
-        Temp t = new Temp(expr.type);
-        emit( t.gen() + " = " + gen);
+        String inter = this.toString();
+        Temp t = new Temp(this.type);
+        emit( t.toString() + " = " + inter);
         return t;
+    }
+
+    public String toString() {
+        return op.tag.lexeme + expr.reduce().toString();
     }
 
     public static void main(String[] args) {

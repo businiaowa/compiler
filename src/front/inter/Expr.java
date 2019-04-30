@@ -14,7 +14,7 @@ public abstract class Expr extends Node{
         this.op = op;
     }
 
-    public abstract String gen();
+    public abstract Expr gen();
 
     public abstract Expr reduce();
 }
