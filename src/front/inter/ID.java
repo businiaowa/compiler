@@ -15,6 +15,9 @@ public class ID extends Expr {
         return  this.lexme;
     }
 
+    public Expr gen() {
+        return this;
+    }
 
     public Expr reduce() {
         return this;

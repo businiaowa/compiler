@@ -13,12 +13,14 @@ public class Arith extends Expr {
         this.expr2 = expr2;
     }
 
-
+    public Expr gen() {
+        return new Arith(type, op, expr1.reduce(), expr2.reduce());
+    }
 
     public Expr reduce() {
-        String inter = this.toString();
+        Expr expr = gen();
         Temp t = new Temp(this.type);
-        emit( t.toString() + " = " + inter);
+        emit( t.toString() + " = " + expr.toString());
         return t;
     }
 
@@ -33,6 +35,6 @@ public class Arith extends Expr {
     }
 
     public String toString() {
-        return expr1.reduce().toString() + " " + op.toString() + " " + expr2.reduce().toString();
+        return expr1.toString() + " " + op.toString() + " " + expr2.toString();
     }
 }
