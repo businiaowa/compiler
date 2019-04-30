@@ -13,6 +13,10 @@ public abstract class Logical extends Expr {
         super(Type.BOOL, op);
         this.expr1 = expr1;
         this.expr2 = expr2;
+        this.checkType(expr1, expr2);
+    }
+
+    public void checkType(Expr expr1, Expr expr2) {
         if(expr1.type != Type.BOOL || expr2.type != Type.BOOL) {
             error("type error");
         }
