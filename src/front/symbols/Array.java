@@ -1,6 +1,6 @@
 package front.symbols;
 
-public class Array {
+public class Array{
 
     public Type type;
 

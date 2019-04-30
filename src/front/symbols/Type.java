@@ -8,7 +8,8 @@ public enum Type {
     CHAR(1, new Token("char", Tag.CHAR)),
     INT(4, new Token("int", Tag.INT)),
     FLOAT(4, new Token("float", Tag.FLOAT)),
-    BOOL(1, new Token("bool", Tag.BOOL))
+    BOOL(1, new Token("bool", Tag.BOOL)),
+    ARRAY(0, new Token("[]", Tag.ARRAY)),
     ;
 
     public final int width;

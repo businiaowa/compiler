@@ -12,16 +12,11 @@ public class Lexer {
 
     public char peek = ' ';
 
-    public Map<String, Token> reserves = new HashMap<>();
 
     public Map<String, Token> tokens = new HashMap<>();
 
     public Lexer() {
-        for(Tag tag: Tag.values()) {
-            if(tag.lexeme != null) {
-                reserves.put(tag.lexeme, new Token(tag.lexeme, tag));
-            }
-        }
+
     }
 
     public void error(String error) {
@@ -61,56 +56,56 @@ public class Lexer {
 
         if(peek == '<') {
             if(next() == '=') {
-                return reserves.get(Tag.LE.lexeme);
+                return Token.reserves.get(Tag.LE.lexeme);
             } else {
-                return reserves.get(Tag.LT.lexeme);
+                return Token.reserves.get(Tag.LT.lexeme);
             }
         }
 
         if(peek == '>') {
             if(next() == '=') {
-                return reserves.get(Tag.GE.lexeme);
+                return Token.reserves.get(Tag.GE.lexeme);
             } else {
-                return reserves.get(Tag.GT.lexeme);
+                return Token.reserves.get(Tag.GT.lexeme);
             }
         }
 
         if(peek == '=') {
             if(next() == '=') {
-                return reserves.get(Tag.EQ.lexeme);
+                return Token.reserves.get(Tag.EQ.lexeme);
             } else {
-                return reserves.get(Tag.ASSIGN.lexeme);
+                return Token.reserves.get(Tag.ASSIGN.lexeme);
             }
         }
 
         if(peek == '&') {
             if(next() == '&') {
-                return reserves.get(Tag.AND.lexeme);
+                return Token.reserves.get(Tag.AND.lexeme);
             } else {
-                return reserves.get(Tag.AMP.lexeme);
+                return Token.reserves.get(Tag.AMP.lexeme);
             }
         }
 
         if(peek == '|') {
             if(next() == '|') {
-                return reserves.get(Tag.OR.lexeme);
+                return Token.reserves.get(Tag.OR.lexeme);
             } else {
-                return reserves.get(Tag.BAR.lexeme);
+                return Token.reserves.get(Tag.BAR.lexeme);
             }
         }
 
         if(peek == '!') {
             if(next() == '=') {
-                return reserves.get(Tag.NOTEQ.lexeme);
+                return Token.reserves.get(Tag.NOTEQ.lexeme);
             } else {
-                return reserves.get(Tag.NOT.lexeme);
+                return Token.reserves.get(Tag.NOT.lexeme);
             }
         }
 
         if(peek == '+' || peek == '-' || peek == '*' || peek == '/') {
             String lexeme = peek + "";
             resetPeek();
-            return reserves.get(lexeme);
+            return Token.reserves.get(lexeme);
         }
 
         if(Character.isDigit(peek)) {
@@ -137,7 +132,7 @@ public class Lexer {
                 s += peek;
             }
             Token token = null;
-            if((token = reserves.get(s)) != null)
+            if((token = Token.reserves.get(s)) != null)
                 return token;
 
             if((token = tokens.get(s)) != null)

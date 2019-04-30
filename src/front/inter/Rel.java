@@ -6,7 +6,6 @@ import front.symbols.Type;
 
 public class Rel extends Logical {
 
-
     public Rel(Expr expr1, Expr expr2, Token op) {
         super(expr1, expr2, op);
     }
@@ -37,7 +36,7 @@ public class Rel extends Logical {
         Arith arith1 = new Arith(Type.INT, new Token("+", Tag.PLUS), expr1, expr2);
         Arith arith2 = new Arith(Type.INT, new Token("+", Tag.PLUS), expr3, expr4);
 
-        Rel rel = new Rel(arith1, arith2, new Token(Tag.GT.lexeme, Tag.GT ));
+        Rel rel = new Rel(arith1, arith2, new Token(Tag.GT.lexeme, Tag.GT));
         rel.gen();
     }
 }
