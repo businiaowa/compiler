@@ -1,7 +1,7 @@
 package front.inter;
 
 import front.lexer.Tag;
-import front.lexer.Token;
+import front.symbols.Type;
 
 public class Temp extends Expr{
 
@@ -9,9 +9,13 @@ public class Temp extends Expr{
 
     public int id;
 
-    public Temp(Token type) {
+    public Temp(Type type) {
         super(type, null);
         this.id = ++index;
+    }
+
+    public String gen() {
+        return Tag.TEMP.lexeme + id;
     }
 
     public String toString() {

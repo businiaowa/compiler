@@ -19,11 +19,11 @@ public class Node {
     }
 
     public String emit(String s) {
-        IO.stdout("\t" + s);
+        IO.stdout("\t" + s + "\n");
         return s;
     }
 
     public void emitLable(int lable) {
-        IO.stdout("L" + lable + "\n");
+        IO.stdout("L" + lable);
     }
 }

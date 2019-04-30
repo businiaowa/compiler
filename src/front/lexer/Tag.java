@@ -34,6 +34,7 @@ public enum Tag {
     BAR("|"),
     ASSIGN("="),
     SEMI(";"),
+    MINUS("-"),
     ;
 
     public String lexeme;
