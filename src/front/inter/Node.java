@@ -14,7 +14,7 @@ public class Node {
         this.line = Lexer.line;
     }
 
-    public int newLable() {
+    public static int newLable() {
         return ++lable;
     }
 

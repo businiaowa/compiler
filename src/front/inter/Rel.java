@@ -22,6 +22,13 @@ public class Rel extends Logical {
         return super.gen();
     }
 
+    @Override
+    public void emitJumps(int t, int f) {
+        expr1 = expr1.reduce();
+        expr2 = expr2.reduce();
+        super.emitJumps(t, f);
+    }
+
     public String toString() {
         return expr1.toString() + " " + op.toString() + " " + expr2.toString();
     }
