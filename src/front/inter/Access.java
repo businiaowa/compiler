@@ -37,6 +37,7 @@ public class Access extends Expr {
     }
 
     public static void main(String[] args) {
+        //translate -> i > j || arr[i + j]
         ID expr = new ID("arr", Type.ARRAY);
 
         Expr expr1 = new ID("i", Type.INT);
