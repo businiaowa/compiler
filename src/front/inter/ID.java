@@ -4,15 +4,15 @@ import front.symbols.Type;
 
 public class ID extends Expr {
 
-    public String lexme;
+    public String lexeme;
 
     public ID(String lexme, Type type) {
         super(type, null);
-        this.lexme = lexme;
+        this.lexeme = lexme;
     }
 
     public String toString() {
-        return  this.lexme;
+        return  this.lexeme;
     }
 
     public Expr gen() {
