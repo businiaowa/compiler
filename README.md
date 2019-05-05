@@ -8,8 +8,6 @@ decl -> type id
 
 type -> type[num] | basic
 
-basic -> int | char | float | bool
-
 stmts -> stmts stmt | E
 
 stmt -> loc = bool | if(bool) stmt | while(bool) stmt | do stmt while(bool) | block
