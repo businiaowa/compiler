@@ -8,13 +8,8 @@ public class IO {
         System.out.print(s);
     }
 
-    public static int stdin() {
-        try {
-            int c = System.in.read();
-            return c;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return -1;
+    public static int stdin() throws IOException{
+        int c = System.in.read();
+        return c;
     }
 }

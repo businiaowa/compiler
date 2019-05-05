@@ -36,6 +36,11 @@ public enum Tag {
     SEMI(";"),
     MINUS("-"),
     ARRAY("[]"),
+    LBRACE("{"),
+    RBRACE("}"),
+    LPAREN("("),
+    RPAREN(")"),
+    ELSE("else"),
     ;
 
     public String lexeme;

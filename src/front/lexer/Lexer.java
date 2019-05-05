@@ -3,6 +3,7 @@ package front.lexer;
 import util.IO;
 
 import java.io.EOFException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,6 +12,8 @@ public class Lexer {
     public static int line;
 
     public char peek = ' ';
+
+    private boolean EOF = false;
 
 
     public Map<String, Token> tokens = new HashMap<>();
@@ -23,15 +26,16 @@ public class Lexer {
         throw new Error("line " + line + " " + error);
     }
 
-    public char next() throws EOFException{
+    public char next() throws IOException{
         int i = IO.stdin();
         if(i == -1) {
-            throw new EOFException();
+            EOF = true;
         }
         return peek = (char)i;
     }
 
-    public void handleSpace() throws EOFException{
+
+    public void handleSpace() throws IOException{
         for(;;) {
             if(peek == ' ' || peek == '\t') {
                 next();
@@ -46,16 +50,29 @@ public class Lexer {
         }
     }
 
+    public boolean eof() throws IOException{
+        int i = IO.stdin();
+        if(i == -1) {
+            return true;
+        }
+        peek = (char)i;
+        return false;
+    }
+
+
+
     public void resetPeek() {
         peek = ' ';
     }
 
-    public Token scan() throws EOFException{
+    public Token scan() throws IOException {
+
 
         handleSpace();
 
         if(peek == '<') {
             if(next() == '=') {
+                resetPeek();
                 return Token.reserves.get(Tag.LE.lexeme);
             } else {
                 return Token.reserves.get(Tag.LT.lexeme);
@@ -64,6 +81,7 @@ public class Lexer {
 
         if(peek == '>') {
             if(next() == '=') {
+                resetPeek();
                 return Token.reserves.get(Tag.GE.lexeme);
             } else {
                 return Token.reserves.get(Tag.GT.lexeme);
@@ -72,6 +90,7 @@ public class Lexer {
 
         if(peek == '=') {
             if(next() == '=') {
+                resetPeek();
                 return Token.reserves.get(Tag.EQ.lexeme);
             } else {
                 return Token.reserves.get(Tag.ASSIGN.lexeme);
@@ -80,6 +99,7 @@ public class Lexer {
 
         if(peek == '&') {
             if(next() == '&') {
+                resetPeek();
                 return Token.reserves.get(Tag.AND.lexeme);
             } else {
                 return Token.reserves.get(Tag.AMP.lexeme);
@@ -88,6 +108,7 @@ public class Lexer {
 
         if(peek == '|') {
             if(next() == '|') {
+                resetPeek();
                 return Token.reserves.get(Tag.OR.lexeme);
             } else {
                 return Token.reserves.get(Tag.BAR.lexeme);
@@ -96,6 +117,7 @@ public class Lexer {
 
         if(peek == '!') {
             if(next() == '=') {
+                resetPeek();
                 return Token.reserves.get(Tag.NOTEQ.lexeme);
             } else {
                 return Token.reserves.get(Tag.NOT.lexeme);
@@ -143,7 +165,13 @@ public class Lexer {
             return token;
         }
 
-        error("unexpected token.");
+        Token token = Token.reserves.get("" + peek);
+        if(token != null) {
+            resetPeek();
+            return token;
+        }
+        if(!EOF)
+            error("unexpected token.");
         return null;
     }
 

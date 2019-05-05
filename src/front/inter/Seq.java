@@ -12,9 +12,9 @@ public class Seq extends Stmt {
     @Override
     public void gen(int b, int a) {
 
-        if(stmt1 == null) {
+        if(stmt1 instanceof Null) {
             stmt2.gen(b, a);
-        } else if(stmt2 == null) {
+        } else if(stmt2 instanceof Null) {
             stmt1.gen(b, a);
         } else {
             int lable = newLable();

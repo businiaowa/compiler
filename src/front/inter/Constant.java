@@ -25,7 +25,23 @@ public class Constant extends Expr {
         return  this;
     }
 
+    @Override
+    public void emitJumps(int t, int f) {
+        if(this.type == Type.BOOL) {
+            if(this.op.tag == Tag.TRUE) {
+                if(t != 0)
+                    emitGotoLable(t);
+            } else {
+                if(f != 0)
+                    emitGotoLable(f);
+            }
+
+        }
+    }
+
     public String toString() {
         return this.op.lexeme;
     }
+
+
 }

@@ -6,5 +6,4 @@ public abstract class Stmt extends Node {
 
     public abstract void gen(int b, int a);
 
-
 }

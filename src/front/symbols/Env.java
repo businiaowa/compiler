@@ -23,8 +23,9 @@ public class Env {
 
     public ID get(String lexeme) {
         for(Env env = this; env != null; env = env.pre) {
-            if(env.table.get(lexeme) != null)
-                return env.table.get(lexeme);
+            ID id = env.table.get(lexeme);
+            if(id != null)
+                return id;
         }
         return null;
     }

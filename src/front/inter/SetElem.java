@@ -2,6 +2,7 @@ package front.inter;
 
 import front.lexer.Tag;
 import front.lexer.Token;
+import front.symbols.Array;
 import front.symbols.Type;
 
 public class SetElem extends Stmt {
@@ -23,11 +24,11 @@ public class SetElem extends Stmt {
     @Override
     public void gen(int b, int a) {
         Access access = new Access(id, index, value.type);
-        emit(access.reduce().toString() + " = " + value.reduce().toString());
+        emit(access.reduce().toString() + " = " + value.gen().toString());
     }
 
     public static void main(String[] args) {
-        ID expr = new ID("arr", Type.ARRAY);
+        ID expr = new ID("arr", new Array(Type.INT, 2));
 
         Expr expr1 = new ID("i", Type.INT);
         Expr expr2 = new ID("j", Type.INT);

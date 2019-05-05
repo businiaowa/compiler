@@ -2,6 +2,7 @@ package front.inter;
 
 import front.lexer.Tag;
 import front.lexer.Token;
+import front.symbols.Array;
 import front.symbols.Type;
 
 public class Access extends Expr {
@@ -38,7 +39,7 @@ public class Access extends Expr {
 
     public static void main(String[] args) {
         //translate -> i > j || arr[i + j]
-        ID expr = new ID("arr", Type.ARRAY);
+        ID expr = new ID("arr", new Array(Type.INT, 2));
 
         Expr expr1 = new ID("i", Type.INT);
         Expr expr2 = new ID("j", Type.INT);
